@@ -1,43 +1,19 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+def calculate_final_total(total_amount):
+    """
+    Calculate the final total after applying a discount for students.
 
-public class Student {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Map<String, Double> menu = new HashMap<>();
-        
-        // Menu items and prices
-        menu.put("Burger", 5.99);
-        menu.put("Pizza", 8.99);
-        menu.put("Salad", 4.99);
-        menu.put("Soda", 1.99);
+    Parameters:
+    total_amount (float): The original total amount.
 
-        System.out.println("Welcome to the Restaurant!");
-        System.out.println("Menu:");
-        for (Map.Entry<String, Double> item : menu.entrySet()) {
-            System.out.println(item.getKey() + ": $" + item.getValue());
-        }
+    Returns:
+    float: The final total after discount if applicable.
+    """
+    if total_amount > 50:
+        discount = total_amount * 0.05  # Apply a 5% discount
+        total_amount -= discount
+    return total_amount
 
-        double totalBill = 0.0;
-        String order;
-
-        // Taking orders
-        while (true) {
-            System.out.print("Enter the item you want to order (or 'done' to finish): ");
-            order = scanner.nextLine();
-
-            if (order.equalsIgnoreCase("done")) {
-                break;
-            }
-
-            if (menu.containsKey(order)) {
-                totalBill += menu.get(order);
-                System.out.println(order + " added. Current total: $" + totalBill);
-            } else {
-                System.out.println("Item not on the menu. Please try again.");
-            }
-        }
-
-        // Displaying the total bill
-        System.out.printf("Total bill: $%.
+# Example usage
+total = 60  # Example total amount
+final_total = calculate_final_total(total)
+print(f"The final total after discount is: {final_total:.2f} OMR")
